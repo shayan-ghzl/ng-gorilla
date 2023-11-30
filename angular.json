@@ -63,7 +63,32 @@
               "projects/demo/src/assets"
             ],
             "styles": [
-              "projects/demo/src/styles.scss"
+              {
+                "input": "projects/demo/src/styles.scss"
+              },
+              {
+                "input": "projects/demo/src/highlightjs/material-light.scss"
+              },
+              {
+                "inject": false,
+                "input": "projects/demo/src/styles/custom-themes/pink-bluegrey.scss",
+                "bundleName": "pink-bluegrey"
+              },
+              {
+                "inject": false,
+                "input": "projects/demo/src/styles/custom-themes/deeppurple-amber.scss",
+                "bundleName": "deeppurple-amber"
+              },
+              {
+                "inject": false,
+                "input": "projects/demo/src/styles/custom-themes/indigo-pink.scss",
+                "bundleName": "indigo-pink"
+              },
+              {
+                "inject": false,
+                "input": "projects/demo/src/styles/custom-themes/purple-green.scss",
+                "bundleName": "purple-green"
+              }
             ],
             "scripts": []
           },

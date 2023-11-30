@@ -2,12 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Demo</title>
+  <title>NgMaterialFileInput</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
 </head>
-<body>
+<body class="docs-app-background">
   <app-root></app-root>
+  <script>
+    // This hides the address bar on mobile browsers
+    // https://developers.google.com/web/fundamentals/native-hardware/fullscreen/
+    window.addEventListener('load', function() { window.scrollTo(0, 1); });
+  </script>
 </body>
 </html>
