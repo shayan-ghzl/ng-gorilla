@@ -1,0 +1,9 @@
+<mat-chip-set>
+    <mat-chip *ngFor="let file of value" (removed)="remove(file)">
+        {{file.name}}
+        <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </mat-chip>
+</mat-chip-set>
+<input type="file" #fileInput [attr.multiple]="multiple" [attr.accept]="accept" (change)="onUpload($event.target.files)" />

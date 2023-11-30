@@ -5,15 +5,19 @@
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "paths": {
-      "ng-material-file-input": [
+      "ng-material-file-input-dep": [
         "./dist/ng-material-file-input"
-      ]
+      ],
+      "ng-material-file-input": [
+        "./projects/ng-material-file-input/src/public-api"
+      ],
     },
     "sourceMap": true,
     "declaration": false,
