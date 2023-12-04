@@ -49,6 +49,7 @@ const MixinErrorStateBase =
   templateUrl: './ng-material-file-input.html',
   styles: [`
     app-inline-uploader{
+      --mat-file-input-placeholder-text-color: red;
       display: block;
       min-height: 40px;
 
@@ -61,6 +62,37 @@ const MixinErrorStateBase =
           opacity: 0;
           display: none;
       }
+    }
+
+    .mat-mdc-file-input-value {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap
+    }
+
+    .mat-mdc-file-input-min-line:empty::before {
+        content: ' ';
+        white-space: pre;
+        width: 1px;
+        display: inline-block;
+        visibility: hidden;
+    }
+
+    .mat-mdc-file-input-placeholder {
+        transition: color 400ms 133.3333333333ms cubic-bezier(0.25, 0.8, 0.25, 1);
+        color: var(--mat-file-input-placeholder-text-color)
+    }
+
+    ._mat-animation-noopable .mat-mdc-file-input-placeholder {
+        transition: none
+    }
+
+    .mat-form-field-hide-placeholder .mat-mdc-file-input-placeholder {
+        color: rgba(0, 0, 0, 0);
+        -webkit-text-fill-color: rgba(0, 0, 0, 0);
+        transition: none;
+        display: block
     }
   `],
   encapsulation: ViewEncapsulation.None,

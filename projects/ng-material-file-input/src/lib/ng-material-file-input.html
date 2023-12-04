@@ -5,5 +5,8 @@
             <mat-icon>cancel</mat-icon>
         </button>
     </mat-chip>
+    <div class="mat-mdc-file-input-value">
+        <span class="mat-mdc-file-input-placeholder mat-mdc-file-input-min-line" *ngIf="empty">{{placeholder}}</span>
+    </div>
 </mat-chip-set>
 <input type="file" #fileInput [attr.multiple]="multiple" [attr.accept]="accept" (change)="onUpload($event.target.files)" />
