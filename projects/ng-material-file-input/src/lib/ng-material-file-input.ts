@@ -45,10 +45,10 @@ const MixinErrorStateBase =
 
 
 @Component({
-  selector: 'app-inline-uploader',
+  selector: 'mat-file-input',
   templateUrl: './ng-material-file-input.html',
   styles: [`
-    app-inline-uploader{
+    mat-file-input{
       --mat-file-input-placeholder-text-color: red;
       display: block;
       min-height: 40px;

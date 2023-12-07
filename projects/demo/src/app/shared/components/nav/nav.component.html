@@ -1,7 +1,7 @@
 <div class="docs-component-viewer-nav">
     <div class="docs-component-viewer-nav-content">
         <mat-nav-list>
-          <a mat-list-item *ngFor="let component of docItems"
+          <a mat-list-item *ngFor="let component of docItems.getItems('components')"
              [routerLink]="'/' + component.id"
              routerLinkActive="docs-component-viewer-sidenav-item-selected"
              [attr.aria-current]="currentItemId === component.id ? 'page': 'false'">

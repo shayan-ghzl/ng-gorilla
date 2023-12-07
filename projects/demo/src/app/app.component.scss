@@ -28,6 +28,7 @@ app-root > router-outlet + app-sidenav {
 @media (max-width: constants.$extra-small-breakpoint-width) {
   app-root > router-outlet + .main-content,
   app-root > router-outlet + app-sidenav {
+    margin-top: 92px;
     overflow-y: visible;
   }
 }
