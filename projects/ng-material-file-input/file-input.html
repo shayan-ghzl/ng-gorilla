@@ -1,0 +1,77 @@
+<div class="docs-markdown"><p><code>&lt;mat-file-input&gt;</code> is a form control for uploading files, similar to the native
+<code>&lt;input type=&quot;file&quot;&gt;</code> element. It is designed to work
+inside of a <a href="https://material.angular.io/components/form-field/overview"><code>&lt;mat-form-field&gt;</code></a>
+element. See <a href="https://material.angular.io/components/form-field">the documentation for
+form-field</a> for more information.</p>
+<div material-docs-example="file-input-overview"></div>
+
+
+        <h3 id="mat-file-input-attributes" class="docs-header-link">
+          <span header-link="mat-file-input-attributes"></span>
+          <code>&lt;mat-file-input&gt;</code> attributes
+        </h3>
+      <p>All of the attributes that can be used with <code>&lt;input type=&quot;file&quot;&gt;</code> element can be used
+on <code>&lt;mat-file-input&gt;</code> as well. This includes Angular directives such as <code>ngModel</code>
+and <code>formControl</code>.</p>
+
+        <h3 id="form-field-features" class="docs-header-link">
+          <span header-link="form-field-features"></span>
+          Form field features
+        </h3>
+      <p>There are a number of <code>&lt;mat-form-field&gt;</code> features that can be used with any <code>&lt;mat-file-input&gt;</code>. These include error messages, hint text, prefix &amp; suffix, and theming. For
+additional information about these features, see the
+<a href="https://material.angular.io/components/form-field/overview">form field documentation</a>.</p>
+
+        <h3 id="placeholder" class="docs-header-link">
+          <span header-link="placeholder"></span>
+          Placeholder
+        </h3>
+      <p>The placeholder is text shown when the <code>&lt;mat-form-field&gt;</code> label is floating but the input is empty.
+It is used to give the user an additional hint about what they should type in the input. The
+placeholder can be specified by setting the <code>placeholder</code> attribute on the <code>&lt;mat-file-input&gt;</code>
+element. In some cases that <code>&lt;mat-form-field&gt;</code> may use the placeholder as the label (see the
+<a href="https://material.angular.io/components/form-field/overview#floating-label">form field label documentation</a>).</p>
+
+        <h3 id="changing-when-error-messages-are-shown" class="docs-header-link">
+          <span header-link="changing-when-error-messages-are-shown"></span>
+          Changing when error messages are shown
+        </h3>
+      <p>The <code>&lt;mat-form-field&gt;</code> allows you to
+<a href="https://material.angular.io/components/form-field/overview#error-messages">associate error messages</a>
+with your <code>MatFileInput</code>. By default, these error messages are shown when the control is invalid and
+the user has interacted with (touched) the element or the parent form has been submitted. If
+you wish to override this behavior (e.g. to show the error as soon as the invalid control is dirty
+or when a parent form group is invalid), you can use the <code>errorStateMatcher</code> property of the
+<code>MatFileInput</code>. The property takes an instance of an <code>ErrorStateMatcher</code> object. An <code>ErrorStateMatcher</code>
+must implement a single method <code>isErrorState</code> which takes the <code>FormControl</code> for this <code>MatFileInput</code> as
+well as the parent form and returns a boolean indicating whether errors should be shown. (<code>true</code>
+indicating that they should be shown, and <code>false</code> indicating that they should not.)</p>
+<div material-docs-example="file-input-error-state-matcher"></div>
+
+<p>A global error state matcher can be specified by setting the <code>ErrorStateMatcher</code> provider. This
+applies to all inputs. For convenience, <code>ShowOnDirtyErrorStateMatcher</code> is available in order to
+globally cause input errors to show when the input is dirty and invalid.</p>
+<pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
+  <span class="hljs-attr">providers</span>: [
+    {<span class="hljs-attr">provide</span>: ErrorStateMatcher, <span class="hljs-attr">useClass</span>: ShowOnDirtyErrorStateMatcher}
+  ]
+})
+</code></pre>
+
+        <h4 id="aria-attributes" class="docs-header-link">
+          <span header-link="aria-attributes"></span>
+          Aria attributes
+        </h4>
+      <p>If the containing <code>&lt;mat-form-field&gt;</code> has a label it will automatically be used as the <code>aria-label</code>
+for the <code>&lt;mat-file-input&gt;</code>. However, if there&#39;s no label specified in the form field, <code>aria-label</code>,
+<code>aria-labelledby</code> or <code>&lt;label for=...&gt;</code> should be added.</p>
+
+        <h4 id="errors-and-hints" class="docs-header-link">
+          <span header-link="errors-and-hints"></span>
+          Errors and hints
+        </h4>
+      <p>Any <code>mat-error</code> and <code>mat-hint</code> are automatically added to the input&#39;s <code>aria-describedby</code> list, and
+<code>aria-invalid</code> is automatically updated based on the input&#39;s validity state.</p>
+<p>When conveying an error, be sure to not rely solely on color. In the message itself, you can use an
+icon or text such as &quot;Error:&quot; to indicate the message is an error message.</p>
+</div>
