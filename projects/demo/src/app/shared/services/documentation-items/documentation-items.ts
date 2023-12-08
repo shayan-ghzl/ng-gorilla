@@ -122,7 +122,8 @@ const DOCS: { [key: string]: DocItem[]; } = {
       exampleSpecs: {
         prefix: 'file-input-',
       },
-      additionalApiDocs: [{name: 'Testing', path: 'material-file-input.html'}],
+      overviewPath: '',
+      additionalApiDocs: [{ name: 'Testing', path: 'material-file-input.html' }],
     },
   ]
   // TODO(jelbourn): re-add utilities and a11y as top-level categories once we can generate

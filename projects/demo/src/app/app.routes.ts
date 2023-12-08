@@ -20,6 +20,7 @@ export const canActivateDocs: CanActivateFn = (route) => {
 };
 
 export const routes: Routes = [
+    { path: '', pathMatch: 'full', redirectTo: '/components/categories' },
     { path: 'categories', redirectTo: '/components/categories' },
     { path: 'components', pathMatch: 'full', redirectTo: '/components/categories' },
     {

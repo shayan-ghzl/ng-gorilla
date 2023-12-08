@@ -1,1 +1,11 @@
-<p>overview works!</p>
+<ng-container *ngIf="componentViewer.componentDocItem | async; let docItem">
+    <h2 class="cdk-visually-hidden" tabindex="-1">
+      Overview for {{docItem.id}}
+    </h2>
+    <app-doc-viewer [documentUrl]="getOverviewDocumentUrl(docItem)"
+        class="docs-component-view-text-content docs-component-overview"
+        (contentRendered)="updateTableOfContents('Overview Content', $event)">
+    </app-doc-viewer>
+    <app-table-of-contents #toc container=".mat-drawer-content" *ngIf="showToc | async"></app-table-of-contents>
+</ng-container>
+  
