@@ -55,7 +55,7 @@ export interface DocSection {
   summary: string;
 }
 
-const EXAMPLE_COMPONENTS: {
+export const EXAMPLE_COMPONENTS: {
   [id: string]: LiveExample;
 } = {
   "file-input-overview": {
@@ -70,20 +70,6 @@ const EXAMPLE_COMPONENTS: {
     "selector": "input-overview-example",
     "additionalComponents": [],
     "primaryFile": "input-overview-example.ts",
-    "importPath": "material/input"
-  },
-  "file-input-prefix-suffix": {
-    "packagePath": "material/input/input-prefix-suffix",
-    "title": "Inputs with prefixes and suffixes",
-    "componentName": "InputPrefixSuffixExample",
-    "files": [
-      "input-prefix-suffix-example.ts",
-      "input-prefix-suffix-example.html",
-      "input-prefix-suffix-example.css"
-    ],
-    "selector": "input-prefix-suffix-example",
-    "additionalComponents": [],
-    "primaryFile": "input-prefix-suffix-example.ts",
     "importPath": "material/input"
   },
   "file-input-error-state-matcher": {

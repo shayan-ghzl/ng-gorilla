@@ -11,4 +11,15 @@ export class NavigationFocusService {
   readonly softNavigations = this.navigationEndEvents.pipe(skip(1));
 
   constructor(private router: Router) { }
+
+  isNavigationWithinComponentView(previousUrl: string, newUrl: string) {
+    const componentViewExpression = /(components|cdk)\/([^\/]+)/;
+
+    const previousUrlMatch = previousUrl.match(componentViewExpression);
+    const newUrlMatch = newUrl.match(componentViewExpression);
+
+    return previousUrl && newUrl && previousUrlMatch && newUrlMatch
+      && previousUrlMatch[0] === newUrlMatch[0]
+      && previousUrlMatch[1] === newUrlMatch[1];
+  }
 }

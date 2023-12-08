@@ -1,15 +1,15 @@
+import { ComponentPortal, DomPortalOutlet } from '@angular/cdk/portal';
+import { HttpErrorResponse } from '@angular/common/http';
 import { ApplicationRef, Component, ComponentFactoryResolver, ElementRef, EventEmitter, Injector, Input, NgZone, OnDestroy, Output, SecurityContext, ViewContainerRef } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription, take } from 'rxjs';
 import { DocFetcherService } from '../../services/doc-fetcher.service';
-import { DomSanitizer } from '@angular/platform-browser';
-import { ComponentPortal, DomPortalOutlet } from '@angular/cdk/portal';
 import { HeaderLinkComponent } from '../header-link/header-link.component';
-import { HttpErrorResponse } from '@angular/common/http';
+import { ExampleViewerComponent } from '../example-viewer/example-viewer.component';
 
 @Component({
   selector: 'app-doc-viewer',
   standalone: true,
-  imports: [],
   template: 'Loading document...',
 })
 export class DocViewerComponent implements OnDestroy {
@@ -31,28 +31,30 @@ export class DocViewerComponent implements OnDestroy {
   /** The document text. It should not be HTML encoded. */
   textContent = '';
 
-  // private static initExampleViewer(exampleViewerComponent: ExampleViewer,
-  //   example: string,
-  //   file: string | null,
-  //   region: string | null) {
-  //   exampleViewerComponent.example = example;
-  //   if (file) {
-  //     // if the html div has field `file` then it should be in compact view to show the code
-  //     // snippet
-  //     exampleViewerComponent.view = 'snippet';
-  //     exampleViewerComponent.showCompactToggle = true;
-  //     exampleViewerComponent.file = file;
-  //     if (region) {
-  //       // `region` should only exist when `file` exists but not vice versa
-  //       // It is valid for embedded example snippets to show the whole file (esp short files)
-  //       exampleViewerComponent.region = region;
-  //     }
-  //   } else {
-  //     // otherwise it is an embedded demo
-  //     exampleViewerComponent.view = 'demo';
-  //   }
-
-  // }
+  private static initExampleViewer(exampleViewerComponent: HeaderLinkComponent | ExampleViewerComponent,
+    example: string,
+    file: string | null,
+    region: string | null) {
+    if (exampleViewerComponent instanceof ExampleViewerComponent) {
+      if (file) {
+        // if the html div has field `file` then it should be in compact view to show the code
+        // snippet
+        exampleViewerComponent.view = 'snippet';
+        exampleViewerComponent.showCompactToggle = true;
+        exampleViewerComponent.file = file;
+        if (region) {
+          // `region` should only exist when `file` exists but not vice versa
+          // It is valid for embedded example snippets to show the whole file (esp short files)
+          exampleViewerComponent.region = region;
+        }
+      } else {
+        // otherwise it is an embedded demo
+        exampleViewerComponent.view = 'demo';
+      }
+      return;
+    }
+    exampleViewerComponent.example = example;
+  }
 
   constructor(private _appRef: ApplicationRef,
     private _componentFactoryResolver: ComponentFactoryResolver,
@@ -87,7 +89,7 @@ export class DocViewerComponent implements OnDestroy {
     });
     this._elementRef.nativeElement.innerHTML = rawDocument;
     this.textContent = this._elementRef.nativeElement.textContent;
-    // this._loadComponents('material-docs-example', ExampleViewer);
+    this._loadComponents('material-docs-example', ExampleViewerComponent);
     this._loadComponents('header-link', HeaderLinkComponent);
 
     // Resolving and creating components dynamically in Angular happens synchronously, but since
@@ -118,9 +120,9 @@ export class DocViewerComponent implements OnDestroy {
         element, this._componentFactoryResolver, this._appRef, this._injector);
       const examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
       const exampleViewer = portalHost.attach(examplePortal);
-      // const exampleViewerComponent = exampleViewer.instance as ExampleViewer;
+      const exampleViewerComponent = exampleViewer.instance as HeaderLinkComponent | ExampleViewerComponent;
       if (example !== null) {
-        // DocViewerComponent.initExampleViewer(exampleViewerComponent, example, file, region);
+        DocViewerComponent.initExampleViewer(exampleViewerComponent, example, file, region);
       }
       this._portalHosts.push(portalHost);
     });
