@@ -1,6 +1,6 @@
 @use '../../../styles/constants';
 
-.docs-component-viewer {
+app-viewer {
   font-weight: 400;
   width: calc(100% - #{constants.$sidenav-width + 1} - #{constants.$content-padding-sidenav * 2});
 
@@ -33,7 +33,7 @@
 
   // Display outlet components with toc as flex and switch to
   // vertical direction on small screens
-  app-overview, app-example {
+  app-overview, app-api {
     display: flex;
     align-items: flex-start;
     overflow: visible;
@@ -43,7 +43,7 @@
     }
   }
 
-  table-of-contents {
+  app-table-of-contents {
     top: 35px;
     position: sticky;
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -24,6 +24,8 @@ import { DocumentationItems } from '../../services/documentation-items/documenta
   templateUrl: './nav.component.html'
 })
 export class NavComponent {
+  @Input() section: string;
+
   currentItemId: string | undefined;
-  constructor(public docItems: DocumentationItems) {}
+  constructor(public docItems: DocumentationItems) { }
 }

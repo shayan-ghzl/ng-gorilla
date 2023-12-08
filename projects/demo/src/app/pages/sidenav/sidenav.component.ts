@@ -1,9 +1,8 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDrawerToggleResult, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatTabsModule } from '@angular/material/tabs';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { Observable, Subscription, map } from 'rxjs';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { NavComponent } from '../../shared/components/nav/nav.component';
@@ -23,24 +22,20 @@ const SMALL_WIDTH_BREAKPOINT = 959;
     NavComponent,
     PageHeaderComponent,
     MatSidenavModule,
-    RouterOutlet,
-    MatTabsModule,
-    NgFor,
-    RouterLinkActive,
-    RouterLink,
+    RouterOutlet
   ],
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss', './component-viewer.scss'],
+  styleUrls: ['./sidenav.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class SidenavComponent implements OnInit, OnDestroy {
+  // parameter scoped to this route
+  @Input({required: true}) section: string;
 
   @ViewChild(MatSidenav) sidenav: MatSidenav;
   private subscriptions = new Subscription();
   isExtraScreenSmall: Observable<boolean>;
   isScreenSmall: Observable<boolean>;
-
-  sections: Set<string> = new Set(['overview', 'examples']);
 
   constructor(
     private navigationFocusService: NavigationFocusService,
