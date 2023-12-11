@@ -50,6 +50,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": ["path-normalize"],
             "outputPath": "dist/demo",
             "index": "projects/demo/src/index.html",
             "browser": "projects/demo/src/main.ts",
@@ -59,8 +60,21 @@
             "tsConfig": "projects/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/demo/src/favicon.ico",
-              "projects/demo/src/assets"
+              {
+                "glob": "favicon.ico",
+                "input": "projects/demo/src/favicon.ico",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/demo/src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@angular/components-examples/docs-content",
+                "output": "/docs-content"
+              }
             ],
             "styles": [
               {
@@ -90,6 +104,9 @@
                 "bundleName": "purple-green"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules", "projects/demo/src", "projects/demo/src/styles"]
+            },
             "scripts": []
           },
           "configurations": {
