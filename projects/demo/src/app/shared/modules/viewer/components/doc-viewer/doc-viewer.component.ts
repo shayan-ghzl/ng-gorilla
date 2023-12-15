@@ -4,8 +4,8 @@ import { ApplicationRef, Component, ComponentFactoryResolver, ElementRef, EventE
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription, take } from 'rxjs';
 import { DocFetcherService } from '../../services/doc-fetcher.service';
-import { HeaderLinkComponent } from '../header-link/header-link.component';
 import { ExampleViewerComponent } from '../example-viewer/example-viewer.component';
+import { HeaderLinkComponent } from '../header-link/header-link.component';
 
 @Component({
   selector: 'app-doc-viewer',
@@ -51,7 +51,6 @@ export class DocViewerComponent implements OnDestroy {
         // otherwise it is an embedded demo
         exampleViewerComponent.view = 'demo';
       }
-      return;
     }
     exampleViewerComponent.example = example;
   }

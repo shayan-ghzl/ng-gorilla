@@ -72,7 +72,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "./node_modules/@angular/components-examples/docs-content",
+                "input": "./node_modules/@angular/shayan-documents/docs-content",
                 "output": "/docs-content"
               }
             ],

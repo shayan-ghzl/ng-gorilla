@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewChild, forwardRef } from '@angular/core';
 import { DocViewerComponent } from '../doc-viewer/doc-viewer.component';
 
 @Component({
   selector: 'app-code-snippet',
   standalone: true,
   imports: [
-    DocViewerComponent
+    forwardRef(() => DocViewerComponent)
   ],
   templateUrl: './code-snippet.component.html',
   styleUrl: './code-snippet.component.scss',

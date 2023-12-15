@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { EXAMPLE_COMPONENTS } from '@angular/shayan-documents';
 
 export interface LiveExample {
   /** Title of the example. */
@@ -55,38 +56,6 @@ export interface DocSection {
   summary: string;
 }
 
-export const EXAMPLE_COMPONENTS: {
-  [id: string]: LiveExample;
-} = {
-  "file-input-overview": {
-    "packagePath": "material/input/input-overview",
-    "title": "Basic Inputs",
-    "componentName": "InputOverviewExample",
-    "files": [
-      "input-overview-example.ts",
-      "input-overview-example.html",
-      "input-overview-example.css"
-    ],
-    "selector": "input-overview-example",
-    "additionalComponents": [],
-    "primaryFile": "input-overview-example.ts",
-    "importPath": "material/input"
-  },
-  "file-input-error-state-matcher": {
-    "packagePath": "material/input/input-error-state-matcher",
-    "title": "Input with a custom ErrorStateMatcher",
-    "componentName": "InputErrorStateMatcherExample",
-    "files": [
-      "input-error-state-matcher-example.ts",
-      "./input-error-state-matcher-example.html",
-      "./input-error-state-matcher-example.css"
-    ],
-    "selector": "input-error-state-matcher-example",
-    "additionalComponents": [],
-    "primaryFile": "input-error-state-matcher-example.ts",
-    "importPath": "material/input"
-  }
-};
 const exampleNames = Object.keys(EXAMPLE_COMPONENTS);
 
 const COMPONENTS = 'components';

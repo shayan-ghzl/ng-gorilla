@@ -1,14 +1,14 @@
 import { Clipboard } from '@angular/cdk/clipboard';
 import { NgComponentOutlet, NgFor, NgIf } from '@angular/common';
 import { Component, ElementRef, HostBinding, Input, OnInit, QueryList, Type, ViewChildren } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { EXAMPLE_COMPONENTS } from '../../../../services/documentation-items/documentation-items';
+import { EXAMPLE_COMPONENTS, loadExample } from '@angular/shayan-documents';
 import { normalizePath } from '../../normalize-path';
 import { CodeSnippetComponent } from '../code-snippet/code-snippet.component';
-import { StackBlitzButtonComponent } from '../stack-blitz-button/stack-blitz-button.component';
 
 export interface LiveExample {
   /** Title of the example. */
@@ -47,8 +47,8 @@ const preferredExampleFileOrder = ['HTML', 'TS', 'CSS'];
     MatIconModule,
     MatTooltipModule,
     MatTabsModule,
+    MatButtonModule,
     NgComponentOutlet,
-    StackBlitzButtonComponent
   ],
   templateUrl: './example-viewer.component.html',
   styleUrl: './example-viewer.component.scss'
