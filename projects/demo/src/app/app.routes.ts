@@ -1,16 +1,15 @@
-import { Router, Routes } from '@angular/router';
-import { OverviewComponent } from './pages/overview/overview.component';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router, Routes } from '@angular/router';
+import { CategoryComponent } from './pages/category/category.component';
 import { ExampleComponent } from './pages/example/example.component';
+import { OverviewComponent } from './pages/overview/overview.component';
 import { SidenavComponent } from './pages/sidenav/sidenav.component';
 import { ViewerComponent } from './pages/viewer/viewer.component';
-import { CategoryComponent } from './pages/category/category.component';
-import { CanActivateFn } from '@angular/router';
 import { SECTIONS } from './shared/services/documentation-items/documentation-items';
-import { inject } from '@angular/core';
 
 export const canActivateDocs: CanActivateFn = (route) => {
     const router = inject(Router);
-    
+
     if (Object.keys(SECTIONS).some((s => s.toLowerCase() === route.url[0].path.toLowerCase()))) {
         return true;
     }
@@ -20,7 +19,16 @@ export const canActivateDocs: CanActivateFn = (route) => {
 };
 
 export const routes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: '/components/categories' },
+    {
+        path: '',
+        pathMatch: 'full',
+        loadComponent: () => import('./pages/home-page/home-page.component').then(m => m.HomePageComponent)
+    },
+    {
+        path: 'guide/:id',
+        pathMatch: 'full',
+        loadComponent: () => import('./pages/guide-viewer/guide-viewer.component').then(m => m.GuideViewerComponent)
+    },
     { path: 'categories', redirectTo: '/components/categories' },
     { path: 'components', pathMatch: 'full', redirectTo: '/components/categories' },
     {

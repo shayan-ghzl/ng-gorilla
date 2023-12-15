@@ -5,9 +5,9 @@
 @use './app/pages/sidenav/component-sidenav-theme';
 @use './app/pages/viewer/component-viewer-theme';
 // @use './app/pages/guide-list/guide-list-theme';
-// @use './app/pages/homepage/homepage-theme';
+@use './app/pages/home-page/homepage-theme';
 @use './app/pages/not-found/not-found-theme';
-// @use './app/shared/carousel/carousel-theme';
+@use './app/shared/components/carousel/carousel-theme';
 @use './app/shared/modules/viewer/components/example-viewer/example-viewer-theme';
 @use './app/shared/components/footer/footer-theme';
 @use './app/shared/components/navbar/navbar-theme';
@@ -56,7 +56,7 @@
     background: mat.get-color-from-palette($next-theme, 900) !important;
   }
 
-  // @include carousel-theme.theme($theme);
+  @include carousel-theme.theme($theme);
   @include component-category-list-theme.theme($theme);
   @include component-sidenav-theme.theme($theme);
   @include component-viewer-theme.theme($theme);
@@ -67,7 +67,7 @@
   @include example-viewer-theme.theme($theme);
   @include footer-theme.theme($theme);
   // @include guide-list-theme.theme($theme);
-  // @include homepage-theme.theme($theme);
+  @include homepage-theme.theme($theme);
   @include not-found-theme.theme($theme);
   @include navbar-theme.theme($theme);
   @include table-of-contents-theme.theme($theme);
