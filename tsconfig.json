@@ -12,11 +12,11 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "paths": {
-      "ng-material-file-input-dep": [
-        "./dist/ng-material-file-input"
+      "ng-gorilla-dep": [
+        "./dist/ng-gorilla"
       ],
-      "ng-material-file-input": [
-        "./projects/ng-material-file-input/src/public-api"
+      "ng-gorilla": [
+        "./projects/ng-gorilla/src/public-api"
       ],
     },
     "sourceMap": true,

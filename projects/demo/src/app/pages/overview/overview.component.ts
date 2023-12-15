@@ -1,11 +1,11 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { ChangeDetectorRef, Component, Directive, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { Observable, Subject, map, skip, takeUntil } from 'rxjs';
 import { TableOfContentsComponent } from '../../shared/components/table-of-contents/table-of-contents.component';
-import { ViewerComponent } from '../viewer/viewer.component';
-import { AsyncPipe, NgIf } from '@angular/common';
-import { DocItem } from '../../shared/services/documentation-items/documentation-items';
 import { DocViewerComponent } from '../../shared/modules/viewer/components/doc-viewer/doc-viewer.component';
+import { DocItem } from '../../shared/services/documentation-items/documentation-items';
+import { ViewerComponent } from '../viewer/viewer.component';
 
 /**
  * Base component class for views displaying docs on a particular component (overview, API,
@@ -93,7 +93,7 @@ export class OverviewComponent extends ComponentBaseView {
     // folder named after the component while the overview file is named similarly. e.g.
     //    `cdk#overlay`     -> `cdk/overlay/overlay.md`
     //    `material#button` -> `material/button/button.md`
-    return 'https://raw.githubusercontent.com/shayan-ghzl/ng-material-file-input/master/projects/ng-material-file-input/file-input.html';
+    return 'https://raw.githubusercontent.com/shayan-ghzl/ng-gorilla/master/projects/ng-gorilla/file-input/file-input.html';
 
     // const overviewPath = doc.overviewPath || `${doc.packageName}/${doc.id}/${doc.id}.html`;
     // return `/docs-content/overviews/${overviewPath}`;

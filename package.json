@@ -1,5 +1,5 @@
 {
-  "name": "ng-material-file-input",
+  "name": "ng-gorilla",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -17,10 +17,10 @@
     "@angular/core": "^17.0.0",
     "@angular/forms": "^17.0.0",
     "@angular/material": "^17.0.1",
+    "@angular/ng-gorilla-documents": "github:shayan-ghzl/ng-gorilla-documents",
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
-    "@angular/shayan-documents": "github:shayan-ghzl/shayan-documents",
     "path-normalize": "^6.0.12",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

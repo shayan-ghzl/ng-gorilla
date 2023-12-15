@@ -3,23 +3,23 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-material-file-input": {
+    "ng-gorilla": {
       "projectType": "library",
-      "root": "projects/ng-material-file-input",
-      "sourceRoot": "projects/ng-material-file-input/src",
+      "root": "projects/ng-gorilla",
+      "sourceRoot": "projects/ng-gorilla",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ng-material-file-input/ng-package.json"
+            "project": "projects/ng-gorilla/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ng-material-file-input/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ng-gorilla/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ng-material-file-input/tsconfig.lib.json"
+              "tsConfig": "projects/ng-gorilla/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,7 +27,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ng-material-file-input/tsconfig.spec.json",
+            "tsConfig": "projects/ng-gorilla/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
@@ -72,7 +72,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "./node_modules/@angular/shayan-documents/docs-content",
+                "input": "./node_modules/@angular/ng-gorilla-documents/docs-content",
                 "output": "/docs-content"
               }
             ],

@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { EXAMPLE_COMPONENTS, loadExample } from '@angular/shayan-documents';
+import { EXAMPLE_COMPONENTS, loadExample } from '@angular/ng-gorilla-documents';
 import { normalizePath } from '../../normalize-path';
 import { CodeSnippetComponent } from '../code-snippet/code-snippet.component';
 

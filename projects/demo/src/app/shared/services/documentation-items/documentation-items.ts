@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EXAMPLE_COMPONENTS } from '@angular/shayan-documents';
+import { EXAMPLE_COMPONENTS } from '@angular/ng-gorilla-documents';
 
 export interface LiveExample {
   /** Title of the example. */
