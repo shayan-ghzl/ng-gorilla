@@ -380,4 +380,4 @@ export class GrlFileInput extends MixinErrorStateBase implements MatFormFieldCon
   imports: [GrlFileInput, GrlFileInputButton],
   exports: [GrlFileInput, GrlFileInputButton],
 })
-export class NgMaterialFileInputModule { }
+export class GrlFileInputModule { }

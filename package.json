@@ -1,6 +1,14 @@
 {
   "name": "ng-gorilla",
   "version": "1.0.0",
+  "description": "Material Design components for Angular",
+  "homepage": "https://github.com/shayan-ghzl/ng-gorilla",
+  "bugs": "https://github.com/shayan-ghzl/ng-gorilla/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shayan-ghzl/ng-gorilla.git"
+  },
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
