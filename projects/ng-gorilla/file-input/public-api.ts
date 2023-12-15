@@ -1,4 +1,3 @@
-export * from './models';
-export * from './ng-material-file-input';
-export * from './upload-button';
+export * from './file-input';
+export * from './file-input-button';
 export * from './validator';

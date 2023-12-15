@@ -1,14 +1,21 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, HostBinding, Input, OnChanges, OnDestroy, Optional, Self, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, HostBinding, Input, NgModule, OnChanges, OnDestroy, Optional, Self, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormGroupDirective, NgControl, NgForm, Validators } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { CanDisable, ErrorStateMatcher, HasTabIndex, mixinDisabled, mixinErrorState, mixinTabIndex } from '@angular/material/core';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { Subject } from 'rxjs';
-import { FileInput } from './models';
+import { GrlFileInputButton } from './file-input-button';
 
+export class FileInput {
+  name: string;
+
+  constructor(public file: File) {
+    this.name = file.name;
+  }
+}
 
 let nextUniqueId = 0;
 
@@ -45,11 +52,24 @@ const MixinErrorStateBase =
 
 
 @Component({
-  selector: 'mat-file-input',
-  templateUrl: './ng-material-file-input.html',
+  selector: 'grl-file-input',
+  template: `
+    <mat-chip-set>
+    <mat-chip *ngFor="let file of value" (removed)="remove(file)">
+        {{file.name}}
+        <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </mat-chip>
+    <div class="mat-mdc-file-input-value">
+        <span class="mat-mdc-file-input-placeholder mat-mdc-file-input-min-line" *ngIf="empty">{{placeholder}}</span>
+    </div>
+    </mat-chip-set>
+    <input type="file" #fileInput [attr.multiple]="multiple" [attr.accept]="accept" (change)="onUpload($event.target)" />
+  `,
   styles: [`
-    mat-file-input{
-      --mat-file-input-placeholder-text-color: red;
+    grl-file-input{
+      --grl-file-input-placeholder-text-color: red;
       display: block;
       min-height: 40px;
 
@@ -81,7 +101,7 @@ const MixinErrorStateBase =
 
     .mat-mdc-file-input-placeholder {
         transition: color 400ms 133.3333333333ms cubic-bezier(0.25, 0.8, 0.25, 1);
-        color: var(--mat-file-input-placeholder-text-color)
+        color: var(--grl-file-input-placeholder-text-color)
     }
 
     ._mat-animation-noopable .mat-mdc-file-input-placeholder {
@@ -104,7 +124,7 @@ const MixinErrorStateBase =
     MatIconModule,
   ],
   providers: [
-    { provide: MatFormFieldControl, useExisting: InlineUploaderComponent }
+    { provide: MatFormFieldControl, useExisting: GrlFileInput }
   ],
   inputs: ['disabled', 'tabIndex'],
   host: {
@@ -123,7 +143,7 @@ const MixinErrorStateBase =
     '[attr.id]': 'id'
   },
 })
-export class InlineUploaderComponent extends MixinErrorStateBase implements MatFormFieldControl<any>, ControlValueAccessor, OnDestroy, CanDisable, HasTabIndex, OnChanges, DoCheck {
+export class GrlFileInput extends MixinErrorStateBase implements MatFormFieldControl<any>, ControlValueAccessor, OnDestroy, CanDisable, HasTabIndex, OnChanges, DoCheck {
 
   @ViewChild('fileInput') input: ElementRef<HTMLInputElement>;
 
@@ -149,7 +169,9 @@ export class InlineUploaderComponent extends MixinErrorStateBase implements MatF
     }
   }
 
-  onUpload(fileList: FileList) {
+  onUpload(fileList: any) {
+    console.log(fileList.files);
+    fileList = fileList.files;
     if (!this.disabled) {
       this.value = [];
       for (let i = 0; i < fileList.length; i++) {
@@ -354,11 +376,8 @@ export class InlineUploaderComponent extends MixinErrorStateBase implements MatF
   }
 }
 
-import { NgModule } from '@angular/core';
-import { InlineUploaderButton } from './upload-button';
-
 @NgModule({
-  imports: [InlineUploaderComponent, InlineUploaderButton],
-  exports: [InlineUploaderComponent, InlineUploaderButton],
+  imports: [GrlFileInput, GrlFileInputButton],
+  exports: [GrlFileInput, GrlFileInputButton],
 })
 export class NgMaterialFileInputModule { }

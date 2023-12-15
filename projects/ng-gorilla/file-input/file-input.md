@@ -1,4 +1,4 @@
-`<mat-file-input>` is a form control for uploading files, similar to the native
+`<grl-file-input>` is a form control for uploading files, similar to the native
 `<input type="file">` element. It is designed to work
 inside of a [`<mat-form-field>`](https://material.angular.io/components/form-field/overview)
 element. See [the documentation for
@@ -6,15 +6,15 @@ form-field](https://material.angular.io/components/form-field) for more informat
 
 <!-- example(file-input-overview) -->
 
-### `<mat-file-input>` attributes
+### `<grl-file-input>` attributes
 
 All of the attributes that can be used with `<input type="file">` element can be used
-on `<mat-file-input>` as well. This includes Angular directives such as `ngModel`
+on `<grl-file-input>` as well. This includes Angular directives such as `ngModel`
 and `formControl`.
 
 ### Form field features
 
-There are a number of `<mat-form-field>` features that can be used with any `<mat-file-input>`. These include error messages, hint text, prefix & suffix, and theming. For
+There are a number of `<mat-form-field>` features that can be used with any `<grl-file-input>`. These include error messages, hint text, prefix & suffix, and theming. For
 additional information about these features, see the
 [form field documentation](https://material.angular.io/components/form-field/overview).
 
@@ -22,7 +22,7 @@ additional information about these features, see the
 
 The placeholder is text shown when the `<mat-form-field>` label is floating but the input is empty.
 It is used to give the user an additional hint about what they should type in the input. The
-placeholder can be specified by setting the `placeholder` attribute on the `<mat-file-input>`
+placeholder can be specified by setting the `placeholder` attribute on the `<grl-file-input>`
 element. In some cases that `<mat-form-field>` may use the placeholder as the label (see the
 [form field label documentation](https://material.angular.io/components/form-field/overview#floating-label)).
 
@@ -56,7 +56,7 @@ globally cause input errors to show when the input is dirty and invalid.
 #### Aria attributes
 
 If the containing `<mat-form-field>` has a label it will automatically be used as the `aria-label`
-for the `<mat-file-input>`. However, if there's no label specified in the form field, `aria-label`,
+for the `<grl-file-input>`. However, if there's no label specified in the form field, `aria-label`,
 `aria-labelledby` or `<label for=...>` should be added.
 
 #### Errors and hints
