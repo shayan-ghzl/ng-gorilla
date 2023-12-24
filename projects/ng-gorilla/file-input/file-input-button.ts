@@ -7,15 +7,13 @@ import { GrlFileInput } from './file-input';
   exportAs: 'grlFileInputButton, grlFileInputButtonFor',
   host: {
     '(click)': '_click()',
-    '(blur)': '_blur()',
-    '(focus)': '_focus()',
     '[attr.disabled]': 'disabled || null',
   },
   standalone: true,
 })
 export class GrlFileInputButton {
 
-  @Input('GrlFileInputButton') grlFileInput: GrlFileInput;
+  @Input('grlFileInputButtonFor') grlFileInput: GrlFileInput;
 
   @Input() grlFileInputAction: 'clear' | 'open' = 'open';
 
@@ -38,13 +36,4 @@ export class GrlFileInputButton {
       this.grlFileInput.clear();
     }
   }
-
-  _blur() {
-    // this.grlFileInput.focused = false;
-  }
-
-  _focus() {
-    // this.grlFileInput.focused = true;
-  }
-
 }
