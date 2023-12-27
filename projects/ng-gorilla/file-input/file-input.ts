@@ -7,6 +7,7 @@ import { CanDisable, ErrorStateMatcher, HasTabIndex, mixinDisabled, mixinErrorSt
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { Subject } from 'rxjs';
+import { ByteFormatPipe } from './byte-format.pipe';
 import { GrlFileInputButton } from './file-input-button';
 import { MaxContentSizeValidator } from './validator';
 
@@ -73,6 +74,7 @@ const MixinErrorStateBase =
       display: block;
       min-height: 40px;
       outline: none;
+      user-select: none;
 
       input[type="file"] {
           position: absolute;
@@ -371,7 +373,7 @@ export class GrlFileInput extends MixinErrorStateBase implements MatFormFieldCon
 }
 
 @NgModule({
-  imports: [GrlFileInput, GrlFileInputButton, MaxContentSizeValidator],
-  exports: [GrlFileInput, GrlFileInputButton, MaxContentSizeValidator],
+  imports: [GrlFileInput, GrlFileInputButton, MaxContentSizeValidator, ByteFormatPipe],
+  exports: [GrlFileInput, GrlFileInputButton, MaxContentSizeValidator, ByteFormatPipe],
 })
 export class GrlFileInputModule { }
