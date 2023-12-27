@@ -26,13 +26,17 @@ interface VersionInfo {
 })
 export class VersionPickerComponent {
   /** The currently running version of Material. */
-  materialVersion = '1.0.0';
+  materialVersion = '2.0.0';
   /** The possible versions of the doc site. */
   docVersions: VersionInfo[] = [
     {
       "url": "https://v12.material.angular.io/",
       "title": "1.0.0"
-    }
+    },
+    {
+      "url": "https://v12.material.angular.io/",
+      "title": "2.0.0"
+    },
   ];
 
 }
