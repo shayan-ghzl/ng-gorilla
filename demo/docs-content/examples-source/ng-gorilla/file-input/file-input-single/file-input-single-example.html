@@ -1,0 +1,16 @@
+<form class="example-form">
+
+  <mat-form-field class="example-file-input" appearance="outline">
+    <mat-label>Documents</mat-label>
+    <grl-file-input #fileInput [formControl]="fileFormControl" placeholder="Upload you docs here"></grl-file-input>
+    <button type="button" matSuffix mat-flat-button color="primary" [grlFileInputButtonFor]="fileInput">Upload</button>
+    <mat-hint>You can upload just a single image</mat-hint>
+    @if (fileFormControl.hasError('maxContentSize')) {
+    <mat-error>The file size should not be more than {{1048576 | byteFormat}}</mat-error>
+    }
+    @if (fileFormControl.hasError('required')) {
+    <mat-error>This field is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+
+</form>

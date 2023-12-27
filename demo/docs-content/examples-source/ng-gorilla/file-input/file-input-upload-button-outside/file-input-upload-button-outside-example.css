@@ -1,0 +1,8 @@
+.example-file-input.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+  padding-right: 16px;
+}
+
+.upload-button-outside.mdc-button {
+  display: block;
+  margin-top: 32px;
+}

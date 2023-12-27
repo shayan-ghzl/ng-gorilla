@@ -1,0 +1,17 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-form&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">mat-form-field</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-file-input&quot;</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mat-label</span>&gt;</span>Documents<span class="hljs-tag">&lt;/<span class="hljs-name">mat-label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">grl-file-input</span> #<span class="hljs-attr">fileInput</span> [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;fileFormControl&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Upload you docs here&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">grl-file-input</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mat-hint</span>&gt;</span>You can upload just a single image<span class="hljs-tag">&lt;/<span class="hljs-name">mat-hint</span>&gt;</span>
+    @if (fileFormControl.hasError(&#x27;maxContentSize&#x27;)) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">mat-error</span>&gt;</span>The file size should not be more than {{1048576 | byteFormat}}<span class="hljs-tag">&lt;/<span class="hljs-name">mat-error</span>&gt;</span>
+    }
+    @if (fileFormControl.hasError(&#x27;required&#x27;)) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">mat-error</span>&gt;</span>This field is <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>required<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mat-error</span>&gt;</span>
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">mat-form-field</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;upload-button-outside&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">mat-flat-button</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&quot;primary&quot;</span> [<span class="hljs-attr">grlFileInputButtonFor</span>]=<span class="hljs-string">&quot;fileInput&quot;</span>&gt;</span>Upload<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
