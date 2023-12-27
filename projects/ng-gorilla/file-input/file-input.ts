@@ -1,6 +1,6 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, HostBinding, Input, NgModule, OnChanges, OnDestroy, Optional, Self, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, HostBinding, Input, NgModule, OnChanges, OnDestroy, Optional, Self, SimpleChanges, ViewChild, ViewEncapsulation, numberAttribute } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormGroupDirective, NgControl, NgForm, Validators } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { CanDisable, ErrorStateMatcher, HasTabIndex, mixinDisabled, mixinErrorState, mixinTabIndex } from '@angular/material/core';
@@ -8,6 +8,7 @@ import { MatFormFieldControl } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { Subject } from 'rxjs';
 import { GrlFileInputButton } from './file-input-button';
+import { MaxContentSizeValidator } from './validator';
 
 export class FileInput {
   name: string;
@@ -19,7 +20,7 @@ export class FileInput {
 
 let nextUniqueId = 0;
 
-// Boilerplate for applying mixins to MtxSelect.
+// Boilerplate for applying mixins to GrlFileInput.
 /** @docs-private */
 const MixinErrorStateBase =
   mixinTabIndex(
@@ -50,28 +51,28 @@ const MixinErrorStateBase =
     )
   );
 
-
 @Component({
   selector: 'grl-file-input',
   template: `
     <mat-chip-set>
-    <mat-chip *ngFor="let file of value" (removed)="remove(file)">
-        {{file.name}}
-        <button matChipRemove>
-            <mat-icon>cancel</mat-icon>
-        </button>
-    </mat-chip>
+      <mat-chip *ngFor="let file of value" (removed)="remove(file)">
+          {{file.name}}
+          <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+          </button>
+      </mat-chip>
+    </mat-chip-set>
     <div class="mat-mdc-file-input-value">
         <span class="mat-mdc-file-input-placeholder mat-mdc-file-input-min-line" *ngIf="empty">{{placeholder}}</span>
     </div>
-    </mat-chip-set>
-    <input type="file" #fileInput [attr.multiple]="multiple" [attr.accept]="accept" (change)="onUpload($event.target)" />
+    <input type="file" #fileInput [attr.multiple]="multiple" [attr.accept]="accept" (change)="onUpload($event)" />
   `,
   styles: [`
     grl-file-input{
-      --grl-file-input-placeholder-text-color: red;
+      --grl-file-input-placeholder-text-color: rgba(0, 0, 0, 0.6);
       display: block;
       min-height: 40px;
+      outline: none;
 
       input[type="file"] {
           position: absolute;
@@ -83,14 +84,12 @@ const MixinErrorStateBase =
           display: none;
       }
     }
-
     .mat-mdc-file-input-value {
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap
     }
-
     .mat-mdc-file-input-min-line:empty::before {
         content: ' ';
         white-space: pre;
@@ -98,16 +97,13 @@ const MixinErrorStateBase =
         display: inline-block;
         visibility: hidden;
     }
-
     .mat-mdc-file-input-placeholder {
         transition: color 400ms 133.3333333333ms cubic-bezier(0.25, 0.8, 0.25, 1);
         color: var(--grl-file-input-placeholder-text-color)
     }
-
     ._mat-animation-noopable .mat-mdc-file-input-placeholder {
         transition: none
     }
-
     .mat-form-field-hide-placeholder .mat-mdc-file-input-placeholder {
         color: rgba(0, 0, 0, 0);
         -webkit-text-fill-color: rgba(0, 0, 0, 0);
@@ -151,7 +147,7 @@ export class GrlFileInput extends MixinErrorStateBase implements MatFormFieldCon
 
   @Input() accept: string[] = ['image/*'];
 
-  @Input() sizeLimitation = 1;
+  @Input({ transform: numberAttribute }) maxContentSize: number;
 
   @Input() value: FileInput[] = [];
 
@@ -169,14 +165,12 @@ export class GrlFileInput extends MixinErrorStateBase implements MatFormFieldCon
     }
   }
 
-  onUpload(fileList: any) {
-    console.log(fileList.files);
-    fileList = fileList.files;
-    if (!this.disabled) {
+  onUpload(event: Event) {
+    const fileList = (event.target as HTMLInputElement).files;
+    if (!this.disabled && fileList) {
       this.value = [];
       for (let i = 0; i < fileList.length; i++) {
-        const filesizeMb = +((fileList[i].size / (1024 * 1024)).toFixed(4));
-        if (typeof fileList[i].name != 'undefined' && filesizeMb < this.sizeLimitation && (this.accept.includes('image/*') || this.accept.includes(fileList[i].type) && !(this.value.map(x => x.name).includes(fileList[i].name)))) {
+        if (typeof fileList[i].name != 'undefined' && (!this.maxContentSize || fileList[i].size < this.maxContentSize) && (this.accept.includes('image/*') || this.accept.includes(fileList[i].type) && !(this.value.map(x => x.name).includes(fileList[i].name)))) {
           this.value.push(new FileInput(fileList[i]));
         }
       }
@@ -377,7 +371,7 @@ export class GrlFileInput extends MixinErrorStateBase implements MatFormFieldCon
 }
 
 @NgModule({
-  imports: [GrlFileInput, GrlFileInputButton],
-  exports: [GrlFileInput, GrlFileInputButton],
+  imports: [GrlFileInput, GrlFileInputButton, MaxContentSizeValidator],
+  exports: [GrlFileInput, GrlFileInputButton, MaxContentSizeValidator],
 })
 export class GrlFileInputModule { }

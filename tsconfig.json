@@ -12,11 +12,8 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "paths": {
-      "ng-gorilla-dep": [
-        "./dist/ng-gorilla"
-      ],
-      "ng-gorilla": [
-        "./projects/ng-gorilla/src/public-api"
+      "ng-gorilla/*": [
+        "./projects/ng-gorilla/*"
       ],
     },
     "sourceMap": true,
