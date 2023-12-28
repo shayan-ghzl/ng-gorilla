@@ -26,7 +26,7 @@ interface VersionInfo {
 })
 export class VersionPickerComponent {
   /** The currently running version of Material. */
-  materialVersion = '2.0.0';
+  materialVersion = '2.1.0';
   /** The possible versions of the doc site. */
   docVersions: VersionInfo[] = [
     {
@@ -40,6 +40,10 @@ export class VersionPickerComponent {
     {
       "url": "https://shayan-ghzl.github.io/ng-gorilla/",
       "title": "2.0.0"
+    },
+    {
+      "url": "https://shayan-ghzl.github.io/ng-gorilla/",
+      "title": "2.1.0"
     },
   ];
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { VERSION } from '@angular/material/core';
+import { VERSION } from 'ng-gorilla/core';
+
 
 @Component({
   selector: 'app-footer',

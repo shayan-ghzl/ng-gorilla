@@ -60,7 +60,6 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
 
   toggleSidenav(): Promise<MatDrawerToggleResult> {
-    console.log(this.sidenav);
     return this.sidenav?.toggle();
   }
 

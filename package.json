@@ -1,6 +1,6 @@
 {
   "name": "ng-gorilla",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Material Design components for Angular",
   "homepage": "https://github.com/shayan-ghzl/ng-gorilla",
   "bugs": "https://github.com/shayan-ghzl/ng-gorilla/issues",
@@ -10,11 +10,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "serve-demo": "ng s demo -o",
+    "build-demo": "ng build demo",
+    "build-gorilla": "ng build ng-gorilla",
+    "update-gorilla-documents": "npm update @angular/ng-gorilla-documents"
   },
   "private": true,
   "dependencies": {

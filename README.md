@@ -1,27 +1,70 @@
-# NgMaterialFileInput
+Ng Gorilla
+=======
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
+## Getting Started
 
-## Development server
+```shell
+npm install ng-gorilla
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This module requires @angular/material package to be installed
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Let's display a file input component in your app and verify that everything works.
 
-## Build
+You need to import the `GrlFileInputModule` that you want to display by adding the following lines to
+your `app.component.ts` file.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```ts
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {GrlFileInputModule} from 'ng-gorilla/file-input';
 
-## Running unit tests
+@Component({
+  selector: 'app-root',
+  styleUrls: ['app.component.css'],
+  templateUrl: 'app.component.html',
+  standalone: true,
+  imports: [ReactiveFormsModule, MatFormFieldModule, GrlFileInputModule, MatButtonModule]
+})
+export class AppComponent {
+  fileFormControl = new FormControl([], [Validators.required]);
+}
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
 
-## Running end-to-end tests
+Add the `<grl-file-input>` tag to the `app.component.html` like so:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```html
+<form class="example-form">
+  <mat-form-field class="example-file-input" appearance="outline">
+      <mat-label>Documents</mat-label>
+      <grl-file-input #fileInput 
+        [multiple]="true"
+        [maxContentSize]="1048576"
+        [formControl]="fileFormControl"
+        placeholder="Upload you docs here"></grl-file-input>
+      <button type="button" matSuffix mat-flat-button color="primary" [grlFileInputButtonFor]="fileInput">Upload</button>
+      <mat-hint>You can upload multiple images</mat-hint>
+      @if (fileFormControl.hasError('maxContentSize')) {
+        <mat-error>The file size should not be more than {{1048576 | byteFormat}}</mat-error>
+      }
+      @if (fileFormControl.hasError('required')) {
+       <mat-error>This field is <strong>required</strong></mat-error>
+      }
+  </mat-form-field>
+</form>
+```
 
-## Further help
+Run your local dev server:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+ng serve
+```
+
+Then point your browser to [http://localhost:4200](http://localhost:4200)
+
+You should see the Ng Gorilla file input component on the page.

@@ -44,7 +44,6 @@ export class AppComponent implements OnDestroy {
 function resetScrollPosition() {
   if (typeof document === 'object' && document) {
     const sidenavContent = document.querySelector('.mat-drawer-content');
-    console.log(sidenavContent);
     if (sidenavContent) {
       sidenavContent.scrollTop = 0;
     }
