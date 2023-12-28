@@ -11,14 +11,14 @@ $margin-promotion-sections-small: 15px;
 .docs-header-background::before {
   content: '';
   position: absolute;
-  background-image: url('../../../assets/img/homepage/angular-white-transparent.svg');
+  background-image: url('../../../assets/img/homepage/gorilla-white-transparent.svg');
   background-size: 600px;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background-repeat: no-repeat;
-  background-position: 80% 20px;
+  background-position: 80% -70px;
   opacity: 0.2;
 }
 

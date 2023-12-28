@@ -93,10 +93,8 @@ export class OverviewComponent extends ComponentBaseView {
     // folder named after the component while the overview file is named similarly. e.g.
     //    `cdk#overlay`     -> `cdk/overlay/overlay.md`
     //    `material#button` -> `material/button/button.md`
-    return 'https://raw.githubusercontent.com/shayan-ghzl/ng-gorilla/master/projects/ng-gorilla/file-input/file-input.html';
-
-    // const overviewPath = doc.overviewPath || `${doc.packageName}/${doc.id}/${doc.id}.html`;
-    // return `/docs-content/overviews/${overviewPath}`;
+    const overviewPath = doc.overviewPath || `ng-gorilla/${doc.id}/${doc.id}.html`;
+    return `/docs-content/overviews/${overviewPath}`;
   }
 
 }

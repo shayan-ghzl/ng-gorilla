@@ -12,7 +12,7 @@ const GUIDES = [
     id: 'getting-started',
     name: 'Getting started',
     document: '/docs-content/guides/getting-started.html',
-    overview: 'Add Angular Material to your project!'
+    overview: 'Add Ng Gorilla to your project!'
   }
 ];
 

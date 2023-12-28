@@ -63,8 +63,8 @@ const COMPONENTS = 'components';
 export const SECTIONS: { [key: string]: DocSection; } = {
   [COMPONENTS]: {
     name: 'Components',
-    summary: 'Angular Material offers a wide variety of UI components based on the <a' +
-      ' href="https://material.io/components">Material Design specification</a>'
+    summary: 'Ng Gorilla offers a wide variety of UI components based on the <a' +
+      ' href="https://shayan-ghzl.github.io/ng-gorilla/">Material Design specification</a>'
   }
 };
 

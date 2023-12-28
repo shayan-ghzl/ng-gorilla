@@ -30,11 +30,15 @@ export class VersionPickerComponent {
   /** The possible versions of the doc site. */
   docVersions: VersionInfo[] = [
     {
-      "url": "https://v12.material.angular.io/",
+      "url": "https://shayan-ghzl.github.io/ng-gorilla/",
       "title": "1.0.0"
     },
     {
-      "url": "https://v12.material.angular.io/",
+      "url": "https://shayan-ghzl.github.io/ng-gorilla/",
+      "title": "1.0.1"
+    },
+    {
+      "url": "https://shayan-ghzl.github.io/ng-gorilla/",
       "title": "2.0.0"
     },
   ];
