@@ -170,8 +170,11 @@ export class ExampleViewerComponent implements OnInit {
     }
 
     return this.exampleData
-      ? `/docs-content/examples-highlighted/${this.exampleData.packagePath}/${fileName}`
+      ? `https://raw.githubusercontent.com/shayan-ghzl/ng-gorilla/gh-pages/docs-content/examples-highlighted/${this.exampleData.packagePath}/${fileName}`
       : '';
+    // return this.exampleData
+    //   ? `/docs-content/examples-highlighted/${this.exampleData.packagePath}/${fileName}`
+    //   : '';
   }
 
   _getExampleTabNames() {
@@ -229,7 +232,8 @@ export class ExampleViewerComponent implements OnInit {
       // Name of the default example files. If files with such name exist within the example,
       // we provide a shorthand for them within the example tabs (for less verbose tabs).
       const exampleBaseFileName = `${this.example}-example`;
-      const docsContentPath = `/docs-content/examples-highlighted/${this.exampleData.packagePath}`;
+      const docsContentPath = `https://raw.githubusercontent.com/shayan-ghzl/ng-gorilla/gh-pages/docs-content/examples-highlighted/${this.exampleData.packagePath}`;
+      // const docsContentPath = `/docs-content/examples-highlighted/${this.exampleData.packagePath}`;
 
       const tsPath = normalizePath(`${exampleBaseFileName}.ts`);
       const cssPath = normalizePath(`${exampleBaseFileName}.css`);

@@ -94,7 +94,8 @@ export class OverviewComponent extends ComponentBaseView {
     //    `cdk#overlay`     -> `cdk/overlay/overlay.md`
     //    `material#button` -> `material/button/button.md`
     const overviewPath = doc.overviewPath || `ng-gorilla/${doc.id}/${doc.id}.html`;
-    return `/docs-content/overviews/${overviewPath}`;
+    return `https://raw.githubusercontent.com/shayan-ghzl/ng-gorilla/gh-pages/docs-content/overviews/${overviewPath}`;
+    // return `/docs-content/overviews/${overviewPath}`;
   }
 
 }
