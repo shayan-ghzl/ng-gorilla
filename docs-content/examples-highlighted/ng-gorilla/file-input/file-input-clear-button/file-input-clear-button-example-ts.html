@@ -1,8 +1,8 @@
-<span class="hljs-keyword">import</span> { Component, ViewEncapsulation } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { FormControl, ReactiveFormsModule, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { MatButtonModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/material/button&#x27;</span>;
-<span class="hljs-keyword">import</span> { MatFormFieldModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/material/form-field&#x27;</span>;
-<span class="hljs-keyword">import</span> { FileValidator, GrlFileInputModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ng-gorilla/file-input&#x27;</span>;
+<span class="hljs-keyword">import</span> {Component, ViewEncapsulation} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {FormControl, ReactiveFormsModule, Validators} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> {MatButtonModule} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/material/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {MatFormFieldModule} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/material/form-field&#x27;</span>;
+<span class="hljs-keyword">import</span> {FileValidator, GrlFileInputModule} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;ng-gorilla/file-input&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>File Input with a clear button
@@ -13,10 +13,11 @@
   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;file-input-clear-button-example.html&#x27;</span>,
   <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
   <span class="hljs-attr">imports</span>: [ReactiveFormsModule, MatFormFieldModule, GrlFileInputModule, MatButtonModule],
-  <span class="hljs-attr">encapsulation</span>: ViewEncapsulation.None
+  <span class="hljs-attr">encapsulation</span>: ViewEncapsulation.None,
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileInputClearButtonExample</span> </span>{
-
-  fileFormControl = <span class="hljs-keyword">new</span> FormControl([], [Validators.required, FileValidator.maxContentSize(<span class="hljs-number">1048576</span>)]);
-
+  fileFormControl = <span class="hljs-keyword">new</span> FormControl(
+    [],
+    [Validators.required, FileValidator.maxContentSize(<span class="hljs-number">1048576</span>)],
+  );
 }

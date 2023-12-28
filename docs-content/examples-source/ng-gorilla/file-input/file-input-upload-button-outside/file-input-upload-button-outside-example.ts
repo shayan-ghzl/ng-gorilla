@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FileValidator, GrlFileInputModule } from 'ng-gorilla/file-input';
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FileValidator, GrlFileInputModule} from 'ng-gorilla/file-input';
 
 /**
  * @title File Input with upload button outside of it
@@ -15,7 +15,8 @@ import { FileValidator, GrlFileInputModule } from 'ng-gorilla/file-input';
   imports: [ReactiveFormsModule, MatFormFieldModule, GrlFileInputModule, MatButtonModule],
 })
 export class FileInputUploadButtonOutsideExample {
-
-  fileFormControl = new FormControl([], [Validators.required, FileValidator.maxContentSize(1048576)]);
-
+  fileFormControl = new FormControl(
+    [],
+    [Validators.required, FileValidator.maxContentSize(1048576)],
+  );
 }

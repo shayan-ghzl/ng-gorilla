@@ -1,8 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FileValidator, GrlFileInputModule } from 'ng-gorilla/file-input';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FileValidator, GrlFileInputModule} from 'ng-gorilla/file-input';
 
 /**
  * @title File Input with a clear button
@@ -13,10 +13,11 @@ import { FileValidator, GrlFileInputModule } from 'ng-gorilla/file-input';
   templateUrl: 'file-input-clear-button-example.html',
   standalone: true,
   imports: [ReactiveFormsModule, MatFormFieldModule, GrlFileInputModule, MatButtonModule],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class FileInputClearButtonExample {
-
-  fileFormControl = new FormControl([], [Validators.required, FileValidator.maxContentSize(1048576)]);
-
+  fileFormControl = new FormControl(
+    [],
+    [Validators.required, FileValidator.maxContentSize(1048576)],
+  );
 }
