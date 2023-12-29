@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '../../app-theme';
+@use '../../highlightjs/material-dark';
+
+// Define the dark theme.
+$primary: mat.define-palette(mat.$pink-palette);
+$accent:  mat.define-palette(mat.$blue-grey-palette);
+$theme: mat.define-dark-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+  ),
+  typography: mat.define-typography-config(),
+));
+
+@include mat.all-component-themes(map.merge($theme, (
+  typography: mat.define-typography-config()
+)));
+@include app-theme.theme($theme);
+
+.docs-footer,.docs-primary-header,.mat-mdc-unelevated-button:not(:disabled),app-home-page .docs-header-background,app-navbar .docs-navbar,app-navbar .docs-navbar-header{background:#f0070c!important;background:linear-gradient(90deg,#f0070c 0,#cc26d5 52%,#7702ff 100%)!important}

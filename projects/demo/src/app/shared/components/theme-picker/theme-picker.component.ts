@@ -1,15 +1,15 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { NgFor } from '@angular/common';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription, map } from 'rxjs';
 import { StyleManager } from './style-manager/style-manager';
 import { DocsSiteTheme, ThemeStorage } from './theme-storage/theme-storage';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Subscription, map } from 'rxjs';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-theme-picker',
@@ -45,7 +45,6 @@ export class ThemePickerComponent {
       displayName: 'Indigo & Pink',
       name: 'indigo-pink',
       isDark: false,
-      isDefault: true,
     },
     {
       primary: '#E91E63',
@@ -60,6 +59,14 @@ export class ThemePickerComponent {
       displayName: 'Purple & Green',
       name: 'purple-green',
       isDark: true,
+    },
+    {
+      primary: '#E91E63',
+      accent: '#607D8B',
+      displayName: 'Angular Version 17',
+      name: 'angular-v17',
+      isDark: true,
+      isDefault: true,
     },
   ];
 
@@ -107,11 +114,11 @@ export class ThemePickerComponent {
 
     this.currentTheme = theme;
 
-    if (theme.isDefault) {
-      this.styleManager.removeStyle('theme');
-    } else {
+    // if (theme.isDefault) {
+    //   this.styleManager.removeStyle('theme');
+    // } else {
       this.styleManager.setStyle('theme', `${theme.name}.css`);
-    }
+    // }
 
     if (this.currentTheme) {
       this.liveAnnouncer.announce(`${theme.displayName} theme selected.`, 'polite', 3000);

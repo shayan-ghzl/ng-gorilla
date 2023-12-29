@@ -11,6 +11,17 @@
             }
 
             // The below colors need to align with the themes defined in ThemePicker
+            &.angular-v17 svg {
+                .docs-theme-icon-background {
+                    fill: #303030;
+                }
+                .docs-theme-icon-button {
+                    fill: #7702ff;
+                }
+                .docs-theme-icon-toolbar {
+                    fill: #ed0a1f;
+                }
+            }
             &.deeppurple-amber svg {
                 .docs-theme-icon-background {
                     fill: #fafafa;

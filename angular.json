@@ -102,6 +102,11 @@
                 "inject": false,
                 "input": "projects/demo/src/styles/custom-themes/purple-green.scss",
                 "bundleName": "purple-green"
+              },
+              {
+                "inject": false,
+                "input": "projects/demo/src/styles/custom-themes/angular-v17.scss",
+                "bundleName": "angular-v17"
               }
             ],
             "stylePreprocessorOptions": {
